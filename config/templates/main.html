@@ -1,0 +1,71 @@
+<!-- Main content -->
+<main class="main">
+ 
+ 
+    <div class="container-fluid">
+
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-inverse card-primary">
+                        <div class="card-block p-b-0">
+                            
+                            <h4 class="m-b-0">{{student_count}}</h4>
+                            <p>عدد الطلاب{{student_count}}</p>
+                        </div>
+                        <div class="chart-wrapper p-x-1" style="height:70px;">
+                            <canvas id="card-chart1" class="chart" height="70"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!--/col-->
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-inverse card-info">
+                        <div class="card-block p-b-0">
+                            
+                            <h4 class="m-b-0">9.823</h4>
+                            <p>عدد المدرسين</p>
+                        </div>
+                        <div class="chart-wrapper p-x-1" style="height:70px;">
+                            <canvas id="card-chart2" class="chart" height="70"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!--/col-->
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-inverse card-warning">
+                        <div class="card-block p-b-0">
+                            
+                            <h4 class="m-b-0">9.823</h4>
+                            <p>عدد المخالفات</p>
+                        </div>
+                        <div class="chart-wrapper" style="height:70px;">
+                            <canvas id="card-chart3" class="chart" height="70"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!--/col-->
+
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-inverse card-danger">
+                        <div class="card-block p-b-0">
+                            
+                            <h4 class="m-b-0">{{grade_count}}</h4>
+                            <p>{{grade_count}}عدد الصفوف</p>
+                        </div>
+                        <div class="chart-wrapper p-x-1" style="height:70px;">
+                            <canvas id="card-chart4" class="chart" height="70"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!--/col-->
+
+            </div>
+            <!--/row-->
+        </div>
+
+    </div>
+    <!--/.container-fluid-->
+</main>

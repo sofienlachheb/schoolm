@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Main content -->
+    <main class="main">
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">الرئيسية</li>
+            <li class="breadcrumb-item"><a href="#">المدير</a>
+            </li>
+            <li class="breadcrumb-item active">لوحة التحكم</li>
+        </ol>
+        <div class="container-fluid">
+
+            <div class="animated fadeIn">
+                 <div class="card">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <h4 class="card-title text-danger">
+                                    {{ form.instance.pk|yesno:"تعديل بيانات المدرس,إضافة مدرس جديد" }}
+                                </h4>
+                                <h1></h1>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="card">
+                                <div class="card-block">
+                               
+                                      <div class="tab-content rounded-bottom">
+                                        <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+                                       
+                                            <form method="POST" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                {{ form.as_p }}
+                                                
+                                                    {% for field in form %}
+                                                        <div>
+                                                            
+                                                            {% if field.errors %}
+                                                                <div class="alert alert-danger">
+                                                                    {{ field.errors }}
+                                                                </div>
+                                                            {% endif %}
+                                                        </div>
+                                                    {% endfor %}
+                                                
+                                                <button class="btn-success" type="submit">
+                                                    {{ form.instance.pk|yesno:"تعديل,حفظ" }}
+                                                </button>
+                                            </form>
+                                            <a href="{% url 'teachers:teacher_dashboard' %}">الرجوع إلى الخلف</a>
+</div>
+</div>
+
+</div> 
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<!--/.card-->
+</div>
+</div>
+<!--/.container-fluid-->
+</main>
+{% endblock %}

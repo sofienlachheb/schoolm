@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="main">
+  
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">لوحة التحكم</li>
+      <li class="breadcrumb-item"><a href="#">المدير</a>
+      </li>
+      <li class="breadcrumb-item active"> المواد</li>
+    
+  </ol>
+  <div class="container-fluid">
+      <div class="animated fadeIn">
+          <div class="row">
+              <div class="col-xs-12">
+                  <div class="card">
+                      <div class="card-header">
+                        <div class="row">
+                          <div class="col-sm-6">
+                              <h4 class=" text-success text-sm-left">قائمة المواد</h4>
+                          </div>
+                          {% if user.is_admin%}
+                          <div class="col-sm-6 ">
+                            <h4 class=" text-sm-right">
+                              <a href="{% url 'managers:subjects_add' %}">إضافة مادة جديدة</a>
+                            </h4>
+                          </div>
+                        </div>
+                        {% endif %}
+                         
+                    </div>
+                      <div class="card-block collapse in">
+                     
+                          <p>
+                            <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+                                  
+                                    <table class="table table-striped table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th  > صورة المادة</th>
+                                          <th >اسم المادة</th>
+                                          <th colspan='2'> تعديل</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for subject in subjects %}
+                                        <tr style="height:50px">
+                                          <td >{% if subject.photo %}
+                                                    <img src="{{ subject.photo.url }}" width="30px" height="30px" alt="{{ subject.subjectName }}">
+                                              {% else %}
+                                                  <img src="{% static 'img/default_subject.jpg' %}"width="35px" height="35px" alt="Default Subject Image">
+                                              {% endif %}
+                                            </td>
+                                          <td>{{ subject.subjectName }}</td>
+                                          <td>
+                                            <a  href="{% url 'managers:subjects_edit' pk=subject.pk %}"></a>
+                                            <i class="fa fa-edit "style="font-size:24px;color:green"></i>
+                                          </td>
+                                          <td>
+                                            <a  href="{% url 'managers:subject_delete' pk=subject.pk %}"></a>
+                                            <i class="fa fa-trash-o "style="font-size:24px;color:red"> </i>  
+                                          </td>
+                                        </tr>
+                                      
+                                        {% endfor %}
+                                      </tbody>
+        
+  </div>  
+</p>
+</div>
+</div>
+</div>
+<!--/col-->
+</div>
+<!--/row-->
+</div>
+</div>
+
+</main>
+
+
+
+
+
+{% endblock %}

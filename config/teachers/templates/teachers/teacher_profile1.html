@@ -1,0 +1,29 @@
+<div class="card-body">
+  <div>
+      <img src="{{ teacher.profile_image.url }}" alt="Teacher Image" width="150" height="150">
+  </div>
+
+  <ul>
+      <li>
+          <strong>الاسم:</strong> {{ teacher.teacherName }}
+      </li>
+      <li>
+          <strong>المسمى الوظيفي:</strong> 
+          {{ teacher.get_teacherFunction_display }}
+      </li>
+      <li>
+          <strong>رقم الجوال:</strong> {{ teacher.teacherPhone }}
+      </li>
+      <li>
+          <strong>البريد الالكتروني:</strong> {{ teacher.teacherEmail }}
+      </li>
+      <li>
+          <strong>صفوف تقوم بتدريسها:</strong>
+          <ul>
+              {% for grade in teacher.grades.all %}
+                  <li>{{ grade.name }}</li>
+              {% endfor %}
+          </ul>
+      </li>
+  </ul> 
+</div>

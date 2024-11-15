@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Main content -->
+    <main class="main">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">الرئيسية</li>
+            <li class="breadcrumb-item"><a href="#">المدرس</a>
+            </li>
+            <li class="breadcrumb-item active">صوف تدرسها</li>
+        </ol>
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                 <div class="card">
+                    <div class="card-block">
+                        <div class="row">
+                              <div class="col-md-6">  
+                               
+                                    <h4 class='text-md-center'>صفوف تقوم بتدريسها</h4>
+                                
+                            </div>
+                             
+                        </div>
+                        <hr/>
+                        <div class='row'>
+                            <div class="card">
+                                <div class="card-block">
+                                        
+                                        <ul>
+                                            {% for grade in grades %}
+                                                <li>{{ grade.name }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.card-->
+                    </div>
+                </div>
+            <!--/.container-fluid-->
+           
+</main>
+{% endblock %}

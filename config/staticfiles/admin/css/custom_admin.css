@@ -1,0 +1,29 @@
+/* Ensure the layout adapts well on mobile devices */
+@media screen and (max-width: 600px) {
+    .navbar-header {
+        text-align: center;
+    }
+    .navbar-brand {
+        margin: 0 auto;
+    }
+    .sidebar {
+        display: none;
+    }
+    .content-wrapper {
+        padding: 10px;
+    }
+}
+
+/* Custom RTL support */
+body {
+    direction: rtl; /* Set the direction to RTL */
+}
+
+.navbar, .sidebar {
+    text-align: right;
+}
+
+/* Customize the appearance of forms */
+label {
+    float: right;
+}

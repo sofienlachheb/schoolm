@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>حذف طالب</h1>
+  <p><strong>
+    هل أنت متأكد من حذف الطالب {{ student.name }}?
+  </strong>
+  </p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">حذف</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Main content -->
+    <main class="main">
+     <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">الرئيسية</li>
+            <li class="breadcrumb-item">الطلاب
+            </li>
+            <li class="breadcrumb-item active"><a href="#">المخالفات</a></li>
+        </ol>
+        <div class="container-fluid">
+
+            <div class="animated fadeIn">
+                 <div class="card">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-xs-8">
+                              <h4 class="card-title ">كل مخالفات الصف</h4>
+                            </div>
+                            <div class="col-xs-3">
+                              <a href=" {% url 'students:student_dashboard'%}">رجوع</a>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="card">
+                                <div class="card-block">
+                                  <div class="card">
+                                      <div class="tab-content rounded-bottom">
+                                        <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+  
+                                               
+                   
+    <form method="GET" action="">
+      <label for="grade">اختر الصف:</label>
+      <select name="grade" id="grade" onchange="this.form.submit()">
+          <option value="">--اختر الصف--</option>
+          {% for grade in grades %}
+              <option value="{{ grade.id }}" {% if grade.id == selected_grade %}selected{% endif %}>
+                  {{ grade.name }}
+              </option>
+          {% endfor %}
+      </select>
+    </form>
+
+   
+   
+    {% if students %}
+      
+             
+                    <table class="table table-bordered table-striped table-condensed">
+                         {% for student in students %}
+                            <tr>
+                                <td>
+                                  <strong>
+                                    {{ student.name }}
+                                    ({{ student.roll_number }})
+                                    </strong>
+                                </td>
+                                              
+                                {% for note in notes %}
+                                  {% if note.student.id == student.id %}
+                                      
+                                    <td>
+                                      {{ note.behavior }}
+                                      -
+                                      {{ note.comment }} 
+                                      -
+                                      ({{ note.created }})
+                                    </td>
+                                  {% endif %}
+                                {% endfor %}
+                                  
+                            </tr>
+                        
+              
+                         {% endfor %}
+                        </table>
+    {% else %}
+      <p color="red">لا يوجد مخالفات للصف المحدد.</p>
+    {% endif %}
+   
+  </div>
+</div>
+
+</div> 
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<!--/.card-->
+</div>
+</div>
+<!--/.container-fluid-->
+</main>
+{% endblock %}

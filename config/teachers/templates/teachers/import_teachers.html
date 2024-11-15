@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<!-- Main content -->
+<main class="main">
+
+  <!-- Breadcrumb -->
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">الرئيسية</li>
+      <li class="breadcrumb-item"><a href="#">المدير</a>
+      </li>
+      <li class="breadcrumb-item active">لوحة التحكم</li>
+  </ol>
+
+  <div class="container-fluid">
+
+      <div class="animated fadeIn">
+           <div class="card">
+              <div class="card-block">
+                  <div class="row">
+                      <div class="col-xs-5">
+                    
+                           <h4  class="card-title text-center" >تحميل قائمة المدرسين</h4>
+                       
+                      </div>
+                  </div>
+                  <div class='row'>
+                      <div class="card">
+                          <div class="card-block">
+                            <div class="card">
+                                <div class="tab-content rounded-bottom">
+                                  <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+                                        <!-- templates/import_teachers.html -->
+                                      <form method="POST" enctype="multipart/form-data">
+                                          {% csrf_token %}
+                                          <label for="excel_file">Upload Excel File:</label>
+                                          <input type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls">
+                                          <button type="submit">تحميل</button>
+                                        </form>
+
+                                      {% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+                                   </div>
+                                </div>
+
+                            </div> 
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+<!--/.card-->
+</div>
+</div>
+<!--/.container-fluid-->
+</main>
+{% endblock %}

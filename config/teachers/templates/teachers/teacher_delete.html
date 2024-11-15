@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Main content -->
+    <main class="main">
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">الرئيسية</li>
+            <li class="breadcrumb-item"><a href="#">المدير</a>
+            </li>
+            <li class="breadcrumb-item active">لوحة التحكم</li>
+        </ol>
+        <div class="container-fluid">
+
+            <div class="animated fadeIn">
+                 <div class="card">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                 <h4 class="text-danger"> حذف مدرس</h4>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="card">
+                                <div class="card-block">
+                               
+                                      <div class="tab-content rounded-bottom">
+                    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+                                       
+                          <p class="text-md-center"> 
+                            هل أنت متأكد من حذف المدرس؟ {{ teacher.teacherName }}?
+                          </p>
+
+                        <form method="post">
+                          {% csrf_token %}
+                          <p class="text-md-center"> <button class="btn btn-success" type="submit">حذف</button></p>
+                        </form>
+                        <a href="{% url 'teachers:teacher_dashboard' %}">الرجوع إلى الخلف</a>
+                      </div>
+                    </div>
+                      
+                  </div> 
+                </div>
+                </div>
+              </div>
+             </div>
+                      
+            </div>
+                      <!--/.card-->
+          </div>
+         </div>
+                      <!--/.container-fluid-->
+        </main>
+{% endblock %}

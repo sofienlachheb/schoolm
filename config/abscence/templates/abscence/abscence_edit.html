@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block main %}
+    <!-- Main content -->
+    <main class="main">
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">الرئيسية</li>
+            <li class="breadcrumb-item"><a href="#">المدير</a>
+            </li>
+            <li class="breadcrumb-item active">لوحة التحكم</li>
+        </ol>
+
+        <div class="container-fluid">
+
+            <div class="animated fadeIn">
+                 <div class="card">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <h4 class="card-title">تعديل غياب</h4>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="card">
+                                <div class="card-block">
+                                  <div class="card">
+                                      <div class="tab-content rounded-bottom">
+                                        <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+                                            <form action="" method='POST'class="admission-form d-block" enctype='multipart/form-data'>
+                                            {% csrf_token %}
+                                            {{form|crispy}}
+                                            <p>
+                                                <input class="btn btn-primary float-center" type="submit" value="تعديل">
+                                            </p>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        <!--/.card-->
+        </div>
+    </div>
+<!--/.container-fluid-->
+</main>
+{% endblock %}

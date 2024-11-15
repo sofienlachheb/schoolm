@@ -1,0 +1,10 @@
+<h1>Uploaded File Data</h1>
+<ul>
+    {% for row in data %}
+        <li>
+            {% for cell in row %}
+                {{ cell }}&nbsp;
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Main content -->
+    <main class="main">
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">الرئيسية</li>
+            <li class="breadcrumb-item">الطلاب
+            </li>
+            <li class="breadcrumb-item active"><a href="#">طالب جديد</a></li>
+        </ol>
+        <div class="container-fluid">
+
+            <div class="animated fadeIn">
+                 <div class="card">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-xs-5">
+                              <h4 class="card-title ">إضافة طالب جديد</h4>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="card">
+                                <div class="card-block">
+                                  <div class="card">
+                                      <div class="tab-content rounded-bottom">
+                                        <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+  
+                                            
+                                              <form method="post">
+                                                {% csrf_token %}
+                                                {{ form.as_p }}
+                                                <p align="center"><button type="submit" class="btn btn-success" >إضافة</button></p>
+                                              </form>
+                                            </div>
+                                          </div>
+
+                                        </div> 
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
+</div>
+<!--/.card-->
+</div>
+</div>
+<!--/.container-fluid-->
+</main>
+{% endblock %}

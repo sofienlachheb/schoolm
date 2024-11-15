@@ -1,0 +1,286 @@
+
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+
+
+            {% if user.is_admin %} <!--  or request.user.is_superuser--> 
+            
+            <li class="nav-item">
+                <a class="nav-link" href="managers:manager_dashboard ">
+                    <i class="icon-speedometer"></i> لوحة التحكم                      
+                </a>
+            </li>   
+            <!--الصفوف-->
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="icon-puzzle"></i> الصفوف</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'grades:grade_add'%}">
+                                    <i class="icon-puzzle"></i> إضافة صف
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'grades:grade_list'%}">
+                                    <i class="icon-puzzle"></i> كل الصفوف</a>
+                            </li>
+                    
+                        </ul>
+                    </li>
+                    <!-- المواد -->
+                        <!--الصفوف-->
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="icon-puzzle"></i> المواد</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'managers:subjects_add' %}">
+                                    <i class="icon-puzzle"></i> إضافة مادة جديدة
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'managers:all_subjects'%}">
+                                    <i class="icon-puzzle"></i> كل المواد</a>
+                            </li>
+                    
+                        </ul>
+                    </li>
+                    <!--المدرسون-->
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="icon-puzzle"></i> المدرسون</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'teachers:teacher_add' %}">
+                                    <i class="icon-puzzle"></i> إضافة مدرس
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'teachers:import_teachers' %}">
+                                    <i class="icon-puzzle"></i> تحميل قائمة مدرسين
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'teachers:teacher_list'%}">
+                                    <i class="icon-puzzle"></i> كل االمدرسين</a>
+                            </li>
+                    
+                        </ul>
+                    </li>
+                    <!-- الطلاب-->
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="icon-puzzle"></i> الطلاب</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'students:student_add'%}">
+                                    <i class="icon-puzzle"></i> إضافة طالب
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'students:student_dashboard' %}">
+                                    <i class="icon-puzzle"></i> كل االطلاب</a>
+                            </li>
+                    
+                        </ul>
+                    </li>
+                    <!--أولياء الأمور-->
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="icon-puzzle"></i> اولياء الأمور</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'parents:parent_add'%}">
+                                    <i class="icon-puzzle"></i> إضافة ولي أمر
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'parents:parent_dashboard'%}">
+                                    <i class="icon-puzzle"></i> كل أولياء الأمور</a>
+                            </li>
+                    
+                        </ul>
+                    </li>
+
+                    <!--مخالفات الطلاب-->
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="icon-puzzle"></i> مخالفات الطلاب</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="# ">
+                                    <i class="icon-puzzle"></i> إضافة مخالفة
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'students:student_list_notes'%}">
+                                    <i class="icon-puzzle"></i> كل المخالفات</a>
+                            </li>
+                    
+                        </ul>
+                    </li>
+
+                    <!--غيابات الطلاب-->
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="icon-puzzle"></i> غيابات الطلاب</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="components-buttons.html">
+                                    <i class="icon-puzzle"></i> إضافة غياب
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="components-social-buttons.html">
+                                    <i class="icon-puzzle"></i> كل الغيابات</a>
+                            </li>
+                    
+                        </ul>
+                    </li>
+
+                    <!-- رسائل هدهد-->
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="icon-puzzle"></i> الرسائل</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="icon-puzzle"></i> رسالة جديدة 
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="icon-puzzle"></i> كل الرسائل</a>
+                            </li>
+                    
+                        </ul>
+                    </li>
+                      <!--التقارير-->
+                      <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="icon-puzzle"></i> إحصائية مجمعة لكل المدرسة</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="components-buttons.html">
+                                    <i class="icon-puzzle"></i> إحصائية المخالقات المسجلة لكل مدرس
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="components-social-buttons.html">
+                                    <i class="icon-puzzle"></i>إحصائية مخالفات كل طالب </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="components-social-buttons.html">
+                                    <i class="icon-puzzle"></i>إحصائية مخالفات كل فصل </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="components-social-buttons.html">
+                                    <i class="icon-puzzle"></i>إحصائية نوع مخالفات الطالب </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="components-social-buttons.html">
+                                    <i class="icon-puzzle"></i>إحصائيةفصل الطلاب </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="components-social-buttons.html">
+                                    <i class="icon-puzzle"></i>التقرير الأكاديمي والسلوكي </a>
+                            </li>
+                        </ul>
+                    </li>
+            {% endif %}       
+            {% if user.is_teacher %}
+               
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'teachers:teacher_dashboard' %} ">
+                    <i class="icon-speedometer"></i> لوحة التحكم                      
+                </a>
+            </li>
+               <!--الصفوف-->
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="teachers:teacher_grades">
+                        <i class="icon-puzzle"></i> الصفوف</a>
+                    <ul class="nav-dropdown-items">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'teachers:teacher_grades' %}">
+                                <i class="icon-puzzle"></i> كل الصفوف</a>
+                        </li>
+                
+                    </ul>
+                </li>     
+            <!--مخالفات الطلاب-->
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="icon-puzzle"></i> مخالفات الطلاب</a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="# ">
+                                <i class="icon-puzzle"></i> إضافة مخالفة
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'students:student_list_notes'%}">
+                                <i class="icon-puzzle"></i> الإطلاع على المخالفات</a>
+                        </li>
+                
+                    </ul>
+                </li>
+          
+            <!--غيابات الطلاب-->
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="icon-puzzle"></i> غيابات الطلاب</a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="components-buttons.html">
+                                <i class="icon-puzzle"></i> إضافة غياب
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="components-social-buttons.html">
+                                <i class="icon-puzzle"></i> الإطلاع على الغيابات</a>
+                        </li>
+                     
+                    </ul>
+                </li>
+                 <!-- غيابات الطلاب-->
+                 <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="icon-puzzle"></i> تأخير الطلاب</a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="components-buttons.html">
+                                <i class="icon-puzzle"></i>  إضافة تأخير</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="components-buttons.html">
+                                <i class="icon-puzzle"></i>الإطلاع على التأخير </a>
+                        </li>
+                
+                    </ul>
+                </li>
+            {% endif %}
+            {% if user.is_student %}
+            <li class="nav-item">
+                <a class="nav-link" href="# ">
+                    <i class="icon-speedometer"></i> لوحة التحكم                      
+                </a>
+            </li>  
+                <li> كل الطلاب</li>
+                <li> كل المخالفات</li>
+            {% endif %} 
+            {% if user.is_parent %}
+            <li class="nav-item">
+                <a class="nav-link" href="# ">
+                    <i class="icon-speedometer"></i> لوحة التحكم                      
+                </a>
+            </li>  
+            <li> كل الاولياء</li>
+            <li> كل المخالفات</li>
+        {% endif %} 
+        </ul>
+    </nav>
+</div>

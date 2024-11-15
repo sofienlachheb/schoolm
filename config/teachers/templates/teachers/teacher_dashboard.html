@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<p>User Role: {{ user.is_teacher }}</p>
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <img style="height:100px; width:100px; border-radius:50%; margin:auto" src="{{ request.user.profile_image.url }}" alt="Photo">
+      </div>
+    </div>
+    <ul>
+      <li>{{ request.user.get_full_name }}</li>
+  </ul>
+
+      <div class="personal_information">
+        <div class="row">
+          <h2 class="mx-auto">Personal Information</h2>
+        </div>
+        <hr>
+        <div class="row">
+          <div style="font-size:24px; margin-left: 30px">
+            <pre> {{ teacher.teacherName }}الاسم:</pre>
+           
+            <pre>الوظيفة {{ teacher.teacherFunction }}</pre>
+            <pre> رقم الجوال{{ teacher.phonenum }}</pre>
+            {% for grade in grades %}
+               {{teacher.grade}}
+            {% endfor %}
+            <pre>Image:<img style="height:200px; width:200px; border-radius:50%; margin:auto" src= {{ teacher.profile_image.url }}></pre>
+            
+          </div>
+        </div>
+      </div>
+
+      
+     
+    </div>
+  </div>
+{% endblock %}

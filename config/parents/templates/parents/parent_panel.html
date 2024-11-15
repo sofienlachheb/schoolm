@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block main %}
+    <!-- Main content -->
+    <main class="main">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">الرئيسية</li>
+            <li class="breadcrumb-item"><a href="#">المدير</a>
+            </li>
+            <li class="breadcrumb-item active">لوحة التحكم</li>
+        </ol>
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                 <div class="card">
+                    <div class="card-block">
+                        <div class="row">
+                            
+                                <center><h4>قائمة أولياء الأمور</h4></center>
+                            
+                        </div>
+                        <div class='row'>
+                            <div class="card">
+                                <div class="card-block">
+                                    <table class="table table-bordered  table-sm">  
+                                        <tbody>            
+                                           {% for parent in parents %}
+                                                <tr>
+                                                        
+                                                        <td>  {{parent.parentName}} </td>
+                                                        <td>  {{parent.parentPhone}} </td>
+                                                       
+                                                        <td>  
+                                                            <a class='btn btn-success' href="{% url 'parent:parent_edit' parent.pk %}">تعديل
+                                                                    <!-- <i class="fa fa-edit "style="font-size:36px;color:green"></i> -->   
+                                                            </a>                                                           
+                                                                
+                                                            <a   href="{% url 'parent:parent_delete' parent.pk %}"  >
+                                                            <i class="fa fa-trash-o "style="font-size:24px;color:red"> </i>  
+                                                            </a>
+                                                        </td> 
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table> 
+                                    <hr>
+                                            
+                                    <center>
+                                        <a href="{% url 'parent:parent_add'%}" class="btn btn-primary">إضافة ولي </a>
+                                       
+                                    </center>  
+                                </div>
+                                
+                    </div>
+                </div>
+            </div>
+            <!--/.card-->
+        </div>
+    </div>
+<!--/.container-fluid-->
+{% include 'pagination.html' with page=parents %} 
+</main>
+{% endblock %}

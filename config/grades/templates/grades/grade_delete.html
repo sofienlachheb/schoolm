@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="main">
+  
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">لوحة التحكم</li>
+      <li class="breadcrumb-item"><a href="#">المدير</a>
+      </li>
+      <li class="breadcrumb-item active"> الصفوف</li>
+  </ol>
+  <div class="container-fluid">
+      <div class="animated fadeIn">
+          <div class="row">
+              <div class="col-xs-12">
+                  <div class="card">
+                      <div class="card-header">
+                        <h1 class=" text-danger text-sm-center">حذف صف </h1>
+                      </div>
+                      <div class="card-block collapse in">
+                        <p>
+                          <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+                                <p>هل أنت متأكد من حذف الصف {{ grade.name }}?</p>
+                                <form method="post">
+                                  {% csrf_token %}
+                                  <button class="btn-success" type="submit">حذف</button>
+                                </form>
+                              </div>  
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--/col-->
+            </div>
+            <!--/row-->
+        </div>
+    </div>
+  
+  </main>
+{% endblock %}

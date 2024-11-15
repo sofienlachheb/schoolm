@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="main">
+  
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">لوحة التحكم</li>
+      <li class="breadcrumb-item"><a href="#">المدير</a>
+      </li>
+      <li class="breadcrumb-item active"> المواد</li>
+    
+  </ol>
+  <div class="container-fluid">
+      <div class="animated fadeIn">
+          <div class="row">
+              <div class="col-xs-12">
+                  <div class="card">
+                      <div class="card-header">
+                         <h5 class=" text-danger text-sm-center">تعديل اسم المادة</h5>
+                    </div>
+                      <div class="card-block collapse in">
+                     
+                          <p>
+                            <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+                           
+   <form method="post"enctype="multipart/form-data">
+    {% csrf_token %}
+     
+    {{ form.as_p}}
+    <button type="submit">تعديل</button>
+  </form>
+</div>  
+</p>
+</div>
+</div>
+</div>
+<!--/col-->
+</div>
+<!--/row-->
+</div>
+</div>
+<!-- /.conainer-fluid -->
+</main>
+
+
+
+
+
+{% endblock %}
