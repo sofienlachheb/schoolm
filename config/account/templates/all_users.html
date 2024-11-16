@@ -1,0 +1,66 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="main">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">لوحة التحكم</li>
+      <li class="breadcrumb-item"><a href="#">المدير</a></li>
+      <li class="breadcrumb-item active">المستخدمون</li>
+  </ol>
+  <div class="container-fluid">
+      <div class="animated fadeIn">
+          <div class="row">
+              <div class="col-12">
+                  <div class="card shadow">
+                      <div class="card-header">
+                        <div class="row align-items-center">
+                          <div class="col-sm-6">
+                              <h4 class="text-success text-sm-left" >قائمة المستخدمين</h4>
+                          </div>
+                          {% if user.is_admin %}
+                          <div class="col-sm-6 text-sm-right">
+                            <a href="{% url 'register' %}" class="btn btn-success rounded-pill px-4 custom-rounded-button">
+                                <i class="fa fa-user-plus"></i> إضافة مستخدم جديد
+                              </a>
+                          </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive">
+                              <table class="table table-striped table-hover rounded" style="border-radius: 15px; overflow: hidden;">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>رقم المستخدم</th>
+                                        <th>اسم المستخدم</th>
+                                        <th>البريد الإلكتروني</th>
+                                        <th>تاريخ الانضمام</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in users %}
+                                    <tr>
+                                        <td>{{ user.id }}</td>
+                                        <td class="fw-bold text-danger"><b>{{ user.username }}</b></td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.date_joined|date:"Y-m-d H:i" }}</td>
+                                        <td> <a href="{% url 'user_edit' pk=user.pk %}"><i class="fa fa-edit"aria-hidden="true"style="font-size:24px;color:green"></i></a></td>
+                                        <td> <a href="{% url 'user_delete' pk=user.pk %}"> <i class="fa fa-trash-o" aria-hidden="true"style="font-size:24px;color:red"></i></a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</main>
+
+{% endblock %}
+
+  

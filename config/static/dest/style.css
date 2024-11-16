@@ -7739,3 +7739,26 @@ base-chart.chart {
 #log{
   padding-top: 150px;
 }
+
+
+/***************************/
+
+/* styles.css */
+.user-name {
+  font-family: 'Cairo', sans-serif; /* مثال على خط مخصص */
+  color: #4CAF50; /* لون أخضر جذاب */
+  font-weight: bold; /* جعل الخط عريض */
+  font-size: 1.1rem; /* تكبير الخط قليلاً */
+}
+.custom-rounded-button {
+  border-radius: 15px; /* Makes the button more rounded */
+  padding: 12px 30px;  /* Adjust padding for better proportions */
+  font-size: 16px;     /* Increase font size for readability */
+  transition: all 0.3s ease; /* Add smooth hover effects */
+}
+
+.custom-rounded-button:hover {
+  background-color: #218838; /* Darken background on hover */
+  color: #fff;              /* Ensure text stays visible */
+}
+

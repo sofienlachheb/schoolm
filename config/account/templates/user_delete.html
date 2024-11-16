@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="main">
+  
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">لوحة التحكم</li>
+      <li class="breadcrumb-item"><a href="#">المدير</a>
+      </li>
+      <li class="breadcrumb-item active"> المستخدمون</li>
+  </ol>
+  <div class="container-fluid">
+      <div class="animated fadeIn">
+          <div class="row">
+              <div class="col-xs-12">
+                  <div class="card shadow p-4 border-danger">
+                      <div class="card-header bg-danger text-white">
+                        <h4 class="text-center">تأكيد حذف المستخدم</h4>
+                            <div class="card-tools">
+                            <div style="text-align: left;margin-top:-20px">
+                                  <a href="{% url 'all_users' %}" class="btn btn-tool">
+                                      <i class="fa fa-times"></i>
+                                  </a>
+                            </div>
+                            </div>
+                      
+                      </div>
+                      <div class="card-block collapse in">
+                        <p>
+                          <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+                                <p class="text-md-center text-danger">هل أنت متأكد من حذف المستخدم {{ user.username }}؟</p>
+                                <form method="post">
+                                  {% csrf_token %}
+                                 <p align="center"> <button class="btn btn-danger rounded-pill px-4" type="submit"> حذف</button>
+                                  <a href="{% url 'all_users' %}" class="btn btn-secondary rounded-pill px-4">إلغاء</a>
+                                 </p>
+                                </form>
+                              </div>  
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--/col-->
+            </div>
+            <!--/row-->
+        </div>
+    </div>
+  
+  </main>
+{% endblock %}

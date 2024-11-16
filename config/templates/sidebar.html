@@ -7,10 +7,27 @@
             {% if user.is_admin %} <!--  or request.user.is_superuser--> 
             
             <li class="nav-item">
-                <a class="nav-link" href="managers:manager_dashboard ">
+                <a class="nav-link" href="{% url 'managers:manager_dashboard'%} ">
                     <i class="icon-speedometer"></i> لوحة التحكم                      
                 </a>
             </li>   
+            <!--المستخدمون -->
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="fa fa-users"></i> المستخدمون</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">
+                            <i class="fa fa-user-plus"></i> إضافة مستخدم جديد
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_users'%}">
+                            <i class="fa fa-users"></i> كل المستخدمين</a>
+                    </li>
+            
+                </ul>
+            </li>
             <!--الصفوف-->
                     <li class="nav-item nav-dropdown">
                         <a class="nav-link nav-dropdown-toggle" href="#">
@@ -18,30 +35,30 @@
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'grades:grade_add'%}">
-                                    <i class="icon-puzzle"></i> إضافة صف
+                                    <i  class="fa fa-plus-circle" aria-hidden="true"></i> إضافة صف
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'grades:grade_list'%}">
-                                    <i class="icon-puzzle"></i> كل الصفوف</a>
+                                    <i class="fa fa-reply-all"></i> كل الصفوف</a>
                             </li>
                     
                         </ul>
                     </li>
-                    <!-- المواد -->
-                        <!--الصفوف-->
+            <!-- المواد -->
+    
                     <li class="nav-item nav-dropdown">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="icon-puzzle"></i> المواد</a>
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'managers:subjects_add' %}">
-                                    <i class="icon-puzzle"></i> إضافة مادة جديدة
+                                    <i class="fa fa-plus-circle"></i> إضافة مادة جديدة
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'managers:all_subjects'%}">
-                                    <i class="icon-puzzle"></i> كل المواد</a>
+                                    <i class="fa fa-reply-all"></i> كل المواد</a>
                             </li>
                     
                         </ul>

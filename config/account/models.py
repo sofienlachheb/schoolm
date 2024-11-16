@@ -3,13 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class User(AbstractUser):
-   # ROLE_CHOICES = [
-    #    ('admin', 'admin'),
-     #   ('teacher', 'teacher'),
-     #   ('parent', 'parent'),
-     #   ('student', 'student'),
-   #3 ]
-   # role = models.CharField(max_length=10, choices=ROLE_CHOICES)
+
     is_admin= models.BooleanField('مدير الموقع', default=False)
     is_teacher = models.BooleanField('مدرس', default=False)
     is_student = models.BooleanField('طالب', default=False)
