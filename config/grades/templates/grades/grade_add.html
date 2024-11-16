@@ -11,12 +11,12 @@
     
   </ol>
   <div class="container-fluid">
-      <div class="animated fadeIn">
-          <div class="row">
-              <div class="col-xs-12">
-                  <div class="card">
-                      <div class="card-header">
-                         <h1 class=" text-success text-sm-center">إضافة صف جديد</h1>
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="card"style='border-radius:15px;'>
+                    <div class="card-header"style="background-color:#901838;border-radius:15px;">
+                       <h1 class=" text-sm-center" style="color:white">إضافة صف جديد</h1>
                     </div>
                       <div class="card-block collapse in">
                      
@@ -25,12 +25,12 @@
                               
                               <form method="post">
                                 {% csrf_token %}
-                                <label>
+                                <label style='font-size:16px;color:#901838'>
                                   اسم الصف
                               </label>
                                 {{ form.name }}
-                                <p class="text-md-center">
-                                  <button class="btn btn-sm btn-primary" type="submit">حفظ</button>
+                                <p class="text-md-center" >
+                                  <button class="btn btn-sm btn-success" type="submit"><i class="fa fa-plus" aria-hidden="true"></i>   حفظ  </button>
                                 </p>
                               </form>
                          

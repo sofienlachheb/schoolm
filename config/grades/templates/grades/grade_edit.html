@@ -10,38 +10,42 @@
       <li class="breadcrumb-item active"> الصفوف</li>
     
   </ol>
-  <div class="container-fluid">
-      <div class="animated fadeIn">
-          <div class="row">
-              <div class="col-xs-12">
-                  <div class="card">
-                      <div class="card-header">
-                         <h5 class=" text-danger text-sm-center">تعديل اسم الصف</h5>
-                    </div>
-                      <div class="card-block collapse in">
-                     
-                          <p>
-                            <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
-                           
-   <form method="post">
-    {% csrf_token %}
-        <label>
-            اسم الضف    
+        <div class="container-fluid">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card"style='border-radius:15px;'>
+                                <div class="card-header"style='border-radius:15px;background-color:#901838'>
+                                    <h5  style='color:white'class=" text text-sm-left">تعديل اسم الصف</h5>
+                                    <div class="card-tools">
+                                        <div style="text-align: left;margin-top:-25px;">                                            <a href="{% url 'grades:grade_list' %}" class="btn btn-tool">
+                                                <i style='color:white;'class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-block collapse in">
+                            
+                                
+                                    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
+                                
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                    <label>اسم الصف</label>
+                                                    {{ form.name}}
+                                                    <p align="center" >
+                                                        <button class='btn btn-success  '  style="margin-top:5px;border-radius:15px;" type="submit">تعديل</button>
+                                                    </p>
+                                            </form>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+        <!--/col-->
+                </div>
+        <!--/row-->
+        </div>
 
-        </label>
-    {{ form.name}}
-    <button type="submit">تعديل</button>
-  </form>
-</div>  
-</p>
-</div>
-</div>
-</div>
-<!--/col-->
-</div>
-<!--/row-->
-</div>
-</div>
 <!-- /.conainer-fluid -->
 </main>
 

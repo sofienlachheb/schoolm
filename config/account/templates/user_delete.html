@@ -18,18 +18,18 @@
                       <div class="card-header bg-danger text-white">
                         <h4 class="text-center">تأكيد حذف المستخدم</h4>
                             <div class="card-tools">
-                            <div style="text-align: left;margin-top:-20px">
-                                  <a href="{% url 'all_users' %}" class="btn btn-tool">
-                                      <i class="fa fa-times"></i>
-                                  </a>
-                            </div>
+                              <div style="text-align: left;margin-top:-20px">
+                                    <a href="{% url 'all_users' %}" class="btn btn-tool">
+                                        <i style='color:white;' class="fa fa-times"></i>
+                                    </a>
+                              </div>
                             </div>
                       
                       </div>
                       <div class="card-block collapse in">
                         <p>
                           <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
-                                <p class="text-md-center text-danger">هل أنت متأكد من حذف المستخدم {{ user.username }}؟</p>
+                                <p class="text-md-center " style='font-size:16px;'>هل أنت متأكد من حذف المستخدم {{ user.username }}؟</p>
                                 <form method="post">
                                   {% csrf_token %}
                                  <p align="center"> <button class="btn btn-danger rounded-pill px-4" type="submit"> حذف</button>
