@@ -4,6 +4,11 @@ from account.models import User
 from .models import *
 from .forms import SubjectsForm,SiteSettingForm
 from django.shortcuts import get_object_or_404
+from .forms import UserUploadForm
+from django.contrib import messages
+import openpyxl
+from django.contrib.auth import get_user_model
+#################################################################################
 def manager_dashboard(request):
      context = {
         
@@ -74,9 +79,47 @@ def setting_edit(request,pk):
          else:
                form=SiteSettingForm(instance=setting1)
          return render(request,'managers/setting/setting_edit.html',{'form': form})
-def setting_delete(request,pk):
+def setting_delete(request,pk):    
        setting1=SiteSetting.objects.get(pk=pk)
        if request.method=='POST':
               setting1.delete()
               return redirect('managers:all_subjects')
        return render(request,'managers/setting/setting_delete.html',setting1)
+##############################   Users Students uploaded ##################################
+User = get_user_model()  # Use the custom user model
+def upload_users(request):
+    if request.method == 'POST':
+        form = UserUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            excel_file = form.cleaned_data.get('excel_file')
+
+            if excel_file:
+                # Open the workbook
+                wb = openpyxl.load_workbook(excel_file)
+                # Select the active worksheet
+                worksheet = wb.active
+
+                # Iterate through the rows in the worksheet
+                for row in worksheet.iter_rows(min_row=2):  # Assuming the first row is the header
+                    if len(row) >= 3:  # Ensure there are at least 3 columns (username, email, password)
+                        email = row[1].value
+                        password = row[2].value
+
+                        # Extract the username by removing the domain part (@education.qa)
+                        if email:
+                            username = email.split('@')[0]
+
+                            # Create or update the user if username is provided
+                            user, created = User.objects.get_or_create(username=username)
+                            user.email = email
+                            user.set_password(password)
+                            user.save()
+
+                messages.success(request, 'Users have been successfully uploaded!')
+                return redirect('all_users')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = UserUploadForm()
+
+    return render(request, 'managers/files/upload_users.html', {'form': form})
