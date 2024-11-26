@@ -128,3 +128,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_REDIRECT_URL = 'login'
 AUTH_USER_MODEL = 'account.User'
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760  # Example: Set to 10 MB

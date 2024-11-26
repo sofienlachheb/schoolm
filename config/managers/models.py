@@ -35,3 +35,5 @@ class SiteSetting(models.Model):
         # Methods
     def __str__(self):
         return self.school_name
+class UploadedFile(models.Model):
+    file = models.FileField(upload_to='uploads/')

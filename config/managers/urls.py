@@ -19,4 +19,6 @@ urlpatterns = [
     path('setting_add/', views.setting_add, name='setting_add'),
     path('setting_edit/<pk>', views.setting_edit, name='setting_edit'),
     path('setting_delete/<pk>', views.setting_delete, name='setting_delete'),
+########              uplod files            ######################################  
+   path('upload_users/', views.upload_users, name='upload_users'),
 ]

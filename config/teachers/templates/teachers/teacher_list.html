@@ -8,78 +8,84 @@
             <li class="breadcrumb-item">الرئيسية</li>
             <li class="breadcrumb-item"><a href="#">المدير</a>
             </li>
-            <li class="breadcrumb-item active">لوحة التحكم</li>
+            <li class="breadcrumb-item active">كل المدرسين</li>
         </ol>
         <div class="container-fluid">
             <div class="animated fadeIn">
-                 <div class="card">
-                    <div class="card-block">
-                        <div class="row">
-                              <div class="col-md-6">  
-                                <center>
-                                    <h4>قائمة المدرسين</h4>
-                                </center>
-                            </div>
-                              <div class="col-md-6">
-                                <center>
-                                    <a href="{% url 'teachers:teacher_add' %}" class="text-left">إضافة مدرس </a>
-                                    
-                                </center>
-                              </div>
+                 <div class="card"style='border-radius:15px;'>
+                    <div class="card-header"style='background-color:#901838;border-radius:15px;'>
+                        <div class="row align-items-center">
+                          <div class="col-sm-6">
+                              <h4  style='color:white'class="text text-sm-left" >قائمة المدرسين</h4>
+                          </div>
+                          {% if user.is_admin %}
+                          <div class="col-sm-6 text-sm-right">
+                            <a href="{% url 'teachers:teacher_add' %}" class="btn btn-success"style="margin-top:5px;border-radius:15px">
+                                <i class="fa fa-user-plus"></i> إضافة مدرس جديد
+                              </a>
+                              
+                          </div>
+                          {% endif %}
                         </div>
-                        <hr/>
-                        <div class='row'>
-                            <div class="card">
-                                <div class="card-block">
-                                    <table class="table table-bordered  table-sm">  
-                                        <tbody>            
-                                           {% for teacher in teachers %}
-                                                <tr>
-                                                    <td>{{ teacher.teacherName }}</td>  
-                                                    <td>{{ teacher.teacherEmail }}</td>  
-                                                    <td>{{ teacher.get_teacherFunction_display}}</td>  
-                                                    <td>{{ teacher.teacherPhone }}</td>  
-                                                    <td>
-                                                                 <img src=" {% if teacher.profile_image %}
-                                                                    {{teacher.profile_image.url}} 
-                                                                {% else %}
-                                                                    {% static 'img/avatars/7.jpg' %} 
-                                                                {% endif %}"
-                                                                alt="Profile Picture" 
-                                                                class="circle-image"
-                                                                width="35px"
-                                                                height="35px">  
-                                                       
-                                                          
-                                                     </td>
-
-                                                    <td>
-                                                    {% if teacher.grades.all %}
-                                                        {% for grade in teacher.grades.all %}
-                                                            {{ grade.name }}
-                                                            {% if not forloop.last %},
-                                                            {% endif %}
-                                                        {% endfor %}
+                      </div>
+                    <div class="card-block">
+                      
+                        <table class="table table-bordered  table-sm"> 
+                            <thead>
+                                <th>اسم المدرس</th>
+                                <th>الاميل</th>
+                                <th>المسمى الوظيفي</th>
+                                <th>رقم الجوال</th>
+                                <th>صورة</th>
+                                <th>صفوف تدرسها</th>
+                                <th colspan=2>تعديلات</th>
+                            </thead> 
+                            <tbody>            
+                                {% for teacher in teachers %}
+                                    <tr>
+                                        <td>{{ teacher.teacherName }}</td>  
+                                        <td>{{ teacher.teacherEmail }}</td>  
+                                        <td>{{ teacher.teacherFunction}}</td>  
+                                        <td>{{ teacher.teacherPhone }}</td>  
+                                        <td>
+                                            <img src="  {% if teacher.profile_image %}
+                                                        {{teacher.profile_image.url}} 
                                                         {% else %}
-                                                            لم يتم اختيار أي صفوف
-                                                    {% endif %}
-                                                    </td>
-                                                    
-                                                    <td>  
+                                                        {% static 'img/avatars/7.jpg' %} 
+                                                        {% endif %}"
+                                                        alt="Profile Picture" 
+                                                        class="circle-image"
+                                                        width="35px"
+                                                        height="35px">          
+                                        </td>
+                                        <td>
+                                            {% if teacher.grades.exists %}
+                                                <ul>
+                                                    {% for grade in teacher.grades.all %}
+                                                        <li>
+                                                            {{ grade.name }}
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                لم يتم اختيار أي صفوف
+                                            {% endif %}
+                                                                                </td>        
+                                                                                <td>  
                                                         <a  href="{% url 'teachers:teacher_edit' teacher.pk %}">
                                                           <i class="fa fa-edit "style="font-size:24px;color:green"></i>    
                                                         </a> 
-                                                    </td>
-                                                    <td>                                                        
+                                        </td>
+                                        <td>                                                        
                                                         <a href="{% url 'teachers:teacher_delete' teacher.pk %}"  >
                                                           <i class="fa fa-trash-o "style="font-size:24px;color:red"> </i>  
                                                         </a>
-                                                    </td> 
-                                                </tr>
+                                        </td> 
+                                    </tr>
                                             {% endfor %}
-                                        </tbody>
-                                    </table> 
-                                    <hr>
+                            </tbody>
+                        </table> 
+                        <hr>
                                             
                                       
                                 </div>

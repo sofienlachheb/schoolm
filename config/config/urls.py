@@ -10,9 +10,9 @@ urlpatterns = [
     path('students/',include('students.urls')),
     path('note/',include('note.urls')),
     path('grades/',include('grades.urls')),
-    path('parent/',include('parents.urls')),
+    path('parents/',include('parents.urls')),
     path('teachers/',include('teachers.urls')),
-    path('manager/',include('managers.urls')),
+    path('managers/',include('managers.urls')),
    
  ]
 

@@ -22,6 +22,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'managers:upload_users' %}">
+                            <i class="fa fa-user-plus"></i> تحميل قائمة المستخدمين
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'all_users'%}">
                             <i class="fa fa-users"></i> كل المستخدمين</a>
                     </li>
@@ -73,11 +78,7 @@
                                     <i class="icon-puzzle"></i> إضافة مدرس
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'teachers:import_teachers' %}">
-                                    <i class="icon-puzzle"></i> تحميل قائمة مدرسين
-                                </a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'teachers:teacher_list'%}">
                                     <i class="icon-puzzle"></i> كل االمدرسين</a>

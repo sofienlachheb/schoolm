@@ -2,78 +2,69 @@
 
 {% block content %}
 <main class="main">
-  
-  <ol class="breadcrumb">
-      <li class="breadcrumb-item">لوحة التحكم</li>
-      <li class="breadcrumb-item"><a href="#">المدير</a>
-      </li>
-      <li class="breadcrumb-item active"> الصفوف</li>
-    
-  </ol>
-  <div class="container-fluid">
-      <div class="animated fadeIn">
-          <div class="row">
-              <div class="col-xs-12">
-                  <div class="card">
-                      <div class="card-header">
-                        <div class="row">
-                          <div class="col-sm-6">
-                              <h4 class=" text-success text-sm-left">قائمة الصفوف</h4>
-                          </div>
-                          {% if user.is_admin%}
-                          <div class="col-sm-6 ">
-                            <h4 class=" text-sm-right">
-                              <a href="{% url 'grades:grade_add' %}">إضافة صف جديد</a>
-                            </h4>
-                          </div>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">لوحة التحكم</li>
+        <li class="breadcrumb-item"><a href="#">المدير</a></li>
+        <li class="breadcrumb-item active">الصفوف</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-header" style="border-radius: 15px; background-color: #901838;">
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <h4 style="color: white;" class="text text-sm-left">قائمة الصفوف</h4>
+                                </div>
+                                {% if user.is_admin %}
+                                <div class="col-sm-6 text-sm-right">
+                                    <a href="{% url 'grades:grade_add' %}" class="btn btn-success" style="margin-top: 5px; border-radius: 15px;">
+                                        <i class="fa fa-plus"></i> إضافة صف جديد
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </div>
                         </div>
-                        {% endif %}
-                         
-                    </div>
-                      <div class="card-block collapse in">
-                     
-                          <p>
-                            <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
-                                  
-                                    <table class="table table-striped table-bordered">
-                                      <thead>
+                        <div class="card-block collapse in">
+                            <div class="tab-pane p-3 active preview" role="tabpanel">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
                                         <tr>
-                                          <th >اسم الصف</th>
-                                          <th colspan='2'> تعديلات</th>
+                                            <th style="color: #901838;">المرحلة</th>
+                                            <th>الشعبة</th>
+                                            <th>اسم الصف</th>
+                                            <th style="color: #901838;" colspan="2">تعديلات</th>
                                         </tr>
-                                      </thead>
-                                      <tbody>
+                                    </thead>
+                                    <tbody>
                                         {% for grade in grades %}
                                         <tr>
-                                          <td>{{ grade.name }}</td>
-                                          <td>
-                                            <a href="{% url 'grades:grade_edit' pk=grade.pk %}"> </a>
-                                            <i class="fa fa-edit "style="font-size:24px;color:green"></i>
-                                          </td>
-                                          <td>
-                                            <a  href="{% url 'grades:grade_delete' pk=grade.pk %}"></a>
-                                            <i class="fa fa-trash-o "style="font-size:24px;color:red"> </i>  
-                                          </td>
+                                            <td style="color: #901838; font-size: 20px;">{{ grade.grade_name.class_grade.class_grade }}</td>
+                                            <td style="color: #901838; font-size: 20px;">{{ grade.grade_name.gradename }}</td>
+                                            <td style="color: #901838; font-size: 20px;">{{ grade.name }}</td>
+                                            <td>
+                                                <a href="{% url 'grades:grade_edit' pk=grade.pk %}">
+                                                    <i class="fa fa-edit" style="font-size: 24px; color: green;"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'grades:grade_delete' pk=grade.pk %}">
+                                                    <i class="fa fa-trash-o" style="font-size: 24px; color: #901838;"></i>
+                                                </a>
+                                            </td>
                                         </tr>
-                                      
                                         {% endfor %}
-                                      </tbody>
-        
-  </div>  
-</p>
-</div>
-</div>
-</div>
-<!--/col-->
-</div>
-<!--/row-->
-</div>
-</div>
-
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /col -->
+            </div>
+            <!-- /row -->
+        </div>
+    </div>
 </main>
-
-
-
-
-
 {% endblock %}

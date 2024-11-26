@@ -28,7 +28,7 @@ class TeacherForm(forms.ModelForm):
             'teacherPhone': 'رقم الهاتف',
             'teacherEmail': 'البريد الالكتروني',
             'profile_image': 'صورة المدرس',
-            'grades': 'الصفوف الدراسية',
+            'grades': 'صفوف  تقوم بتدريسها',
         }
        # grades = forms.ModelMultipleChoiceField(
        #    queryset=Grade.objects.all(),

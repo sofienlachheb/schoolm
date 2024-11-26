@@ -1,55 +1,34 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block content %}
-<main class="main">
-  
-  <ol class="breadcrumb">
-      <li class="breadcrumb-item">لوحة التحكم</li>
-      <li class="breadcrumb-item"><a href="#">المدير</a>
-      </li>
-      <li class="breadcrumb-item active"> الصفوف</li>
-    
-  </ol>
-  <div class="container-fluid">
-      <div class="animated fadeIn">
-          <div class="row">
-              <div class="col-xs-12">
-                  <div class="card">
-                      <div class="card-header">
-                         <h1 class=" text-success text-sm-center">إضافة صف جديد</h1>
-                    </div>
-                      <div class="card-block collapse in">
-                     
-                          <p>
-                            <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
-                              
-                              <form method="post">
-                                {% csrf_token %}
-                                <label>
-                                  اسم الصف
-                              </label>
-                                {{ form.name }}
-                                <p class="text-md-center">
-                                  <button class="btn btn-sm btn-primary" type="submit">حفظ</button>
-                                </p>
-                              </form>
-                         
-        
-          </div>  
-                          </p>
-                      </div>
-                  </div>
-              </div>
-              <!--/col-->
-          </div>
-          <!--/row-->
-      </div>
-  </div>
-  <!-- /.conainer-fluid -->
-</main>
-        
+<div class="container mt-4">
+    <h2>إضافة صف جديد</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
 
-       
+        <div class="form-group">
+            <h4>المرحلة الدراسية</h4>
+            {{ class_grade_form.as_p }}
+        </div>
 
+        <div class="form-group">
+            <h4>الشعبة</h4>
+            {{ grade_name_formset.management_form }}
+            {% for form in grade_name_formset %}
+                {{ form.as_p }}
+            {% endfor %}
+        </div>
 
+        <div class="form-group">
+            <h4>اسم الصف</h4>
+            {{ grade_form.as_p }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">حفظ</button>
+        <a href="{% url 'grades:grade_list' %}" class="btn btn-secondary">إلغاء</a>
+    </form>
+</div>
 {% endblock %}

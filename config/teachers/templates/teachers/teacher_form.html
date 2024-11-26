@@ -12,7 +12,6 @@
             <li class="breadcrumb-item active">لوحة التحكم</li>
         </ol>
         <div class="container-fluid">
-
             <div class="animated fadeIn">
                  <div class="card">
                     <div class="card-block">
@@ -30,21 +29,22 @@
                                
                                       <div class="tab-content rounded-bottom">
                                         <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-413">
-                                       
                                             <form method="POST" enctype="multipart/form-data">
                                                 {% csrf_token %}
                                                 {{ form.as_p }}
                                                 
-                                                    {% for field in form %}
+
+
+                                                {% for field in form %}
                                                         <div>
                                                             
                                                             {% if field.errors %}
                                                                 <div class="alert alert-danger">
                                                                     {{ field.errors }}
-                                                                </div>
+                                                                 </div>
                                                             {% endif %}
                                                         </div>
-                                                    {% endfor %}
+                                                {% endfor %}
                                                 
                                                 <button class="btn-success" type="submit">
                                                     {{ form.instance.pk|yesno:"تعديل,حفظ" }}

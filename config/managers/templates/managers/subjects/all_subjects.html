@@ -54,17 +54,18 @@
                                             </td>
                                           <td>{{ subject.subjectName }}</td>
                                           <td>
-                                            <a  href="{% url 'managers:subjects_edit' pk=subject.pk %}"></a>
-                                            <i class="fa fa-edit "style="font-size:24px;color:green"></i>
+                                            <a  href="{% url 'managers:subjects_edit' pk=subject.pk %}">
+                                            <i class="fa fa-edit "style="font-size:24px;color:green"></i></a>
                                           </td>
                                           <td>
-                                            <a  href="{% url 'managers:subject_delete' pk=subject.pk %}"></a>
-                                            <i class="fa fa-trash-o "style="font-size:24px;color:red"> </i>  
+                                            <a  href="{% url 'managers:subject_delete' pk=subject.pk %}">
+                                            <i class="fa fa-trash-o "style="font-size:24px;color:red"> </i> </a> 
                                           </td>
                                         </tr>
                                       
                                         {% endfor %}
                                       </tbody>
+                                    </table>
         
   </div>  
 </p>

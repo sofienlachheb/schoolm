@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth.decorators import login_required
 from .models import User
-
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 def register(request):
     msg=None
     if request.method == 'POST':
@@ -76,7 +76,20 @@ def logout_view(request):
 
 def all_users(request):
     users=User.objects.all()
-    return render(request,'all_users.html',{'users':users})
+    paginator = Paginator(users, 7)
+    page = request.GET.get('page')
+    try:
+      users = paginator.page(page)
+    except PageNotAnInteger:
+         users= paginator.page(1)
+    except EmptyPage:
+         users = paginator.page(paginator.num_page)
+    context = {
+              'title': 'قائمة المستخدمين',
+              'users':users,
+              'page': page,
+             } 
+    return render(request,'all_users.html',context)
 
 def user_edit(request, pk):
     user = User.objects.get(pk=pk)
@@ -102,3 +115,4 @@ def user_delete(request, pk):
         return redirect('all_users')
 
     return render(request, 'user_delete.html', {'user': user})
+
