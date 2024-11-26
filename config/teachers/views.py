@@ -35,19 +35,31 @@ def teacher_list(request):
     return render(request,'teachers/teacher_list.html',context)
 ########################################################################
 #@allow_user(['is_superuser','is_manager'])
-def teacher_add(request):
-    
+def teacher_add(request, pk=None):
+    # Fetch the teacher if editing
+    teacher = get_object_or_404(Teacher, pk=pk) if pk else None
+
     if request.method == 'POST':
-        form = TeacherForm(request.POST,request.FILES)
+        form = TeacherForm(request.POST, request.FILES, instance=teacher)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'تم إضافة المدرس بنجاح!')
-            return redirect('teachers:teacher_list')
-        
+            teacher = form.save(commit=False)
+            teacher.save()
+
+            # Save selected grades
+            selected_grades = request.POST.getlist('grades')
+            teacher.grades.set(selected_grades)
+            return redirect('teachers:teacher_dashboard')
     else:
-        form = TeacherForm()
-        
-    return render(request,'teachers/teacher_form.html', {'form': form})
+        form = TeacherForm(instance=teacher)
+
+    # Call the model method to get grade counts
+    grade_counts = Grade.count_grades_by_gradeName()
+
+    context = {
+        'form': form,
+        'grade_counts': grade_counts,
+    }
+    return render(request, 'teachers/teacher_form.html', context)
 ############################################################################
 #@allow_user(['is_superuser','is_manager'])
 def teacher_edit(request,pk):

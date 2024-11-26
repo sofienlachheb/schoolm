@@ -115,3 +115,4 @@ def user_delete(request, pk):
         return redirect('all_users')
 
     return render(request, 'user_delete.html', {'user': user})
+

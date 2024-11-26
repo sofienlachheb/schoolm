@@ -30,13 +30,22 @@
                       </div>
                     <div class="card-block">
                       
-                        <table class="table table-bordered  table-sm">  
+                        <table class="table table-bordered  table-sm"> 
+                            <thead>
+                                <th>اسم المدرس</th>
+                                <th>الاميل</th>
+                                <th>المسمى الوظيفي</th>
+                                <th>رقم الجوال</th>
+                                <th>صورة</th>
+                                <th>صفوف تدرسها</th>
+                                <th colspan=2>تعديلات</th>
+                            </thead> 
                             <tbody>            
                                 {% for teacher in teachers %}
                                     <tr>
                                         <td>{{ teacher.teacherName }}</td>  
                                         <td>{{ teacher.teacherEmail }}</td>  
-                                        <td>{{ teacher.get_teacherFunction_display}}</td>  
+                                        <td>{{ teacher.teacherFunction}}</td>  
                                         <td>{{ teacher.teacherPhone }}</td>  
                                         <td>
                                             <img src="  {% if teacher.profile_image %}
@@ -49,34 +58,34 @@
                                                         width="35px"
                                                         height="35px">          
                                         </td>
-
                                         <td>
-                                                    {% if teacher.grades.all %}
-                                                        {% for grade in teacher.grades.all %}
+                                            {% if teacher.grades.exists %}
+                                                <ul>
+                                                    {% for grade in teacher.grades.all %}
+                                                        <li>
                                                             {{ grade.name }}
-                                                            {% if not forloop.last %},
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                        {% else %}
-                                                            لم يتم اختيار أي صفوف
-                                                    {% endif %}
-                                             </td>
-                                                    
-                                            <td>  
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                لم يتم اختيار أي صفوف
+                                            {% endif %}
+                                                                                </td>        
+                                                                                <td>  
                                                         <a  href="{% url 'teachers:teacher_edit' teacher.pk %}">
                                                           <i class="fa fa-edit "style="font-size:24px;color:green"></i>    
                                                         </a> 
-                                            </td>
-                                            <td>                                                        
+                                        </td>
+                                        <td>                                                        
                                                         <a href="{% url 'teachers:teacher_delete' teacher.pk %}"  >
                                                           <i class="fa fa-trash-o "style="font-size:24px;color:red"> </i>  
                                                         </a>
-                                            </td> 
+                                        </td> 
                                     </tr>
                                             {% endfor %}
-                               </tbody>
+                            </tbody>
                         </table> 
-                                    <hr>
+                        <hr>
                                             
                                       
                                 </div>
